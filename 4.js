@@ -28,10 +28,7 @@ this.on("start", function(){
   this.thrusters.bottom(true);
 });
 
-this.on("sensor:top", function(contact){
-  this.thrusters.bottom(false);
-});
-
 this.on("sensor:right", function(contact){
   this.thrusters.top(true);
+  this.thrusters.bottom(false);
 });
