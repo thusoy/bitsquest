@@ -13,9 +13,10 @@
  */
 
 var buttonDistanceToFloor = 370;
-var buttonToWallDistance = 107;
+var buttonToWallDistance = 110;
 var state = "findingButtons";
 
+// Start moving up and to the right, measuring distance to the floor
 this.on("start", function(){
     this.thrusters.left(true);
     this.thrusters.bottom(true);
@@ -24,7 +25,6 @@ this.on("start", function(){
 });
 
 this.on("radar:hit", function(angle, distance){
-    console.log("Distance " + distance);
     if (state === "findingButtons"){
       if (Math.abs(buttonDistanceToFloor - distance) < 10){
           this.thrusters.bottom(false);
@@ -49,6 +49,7 @@ this.on("radar:hit", function(angle, distance){
     }
 });
 
+// Exit found
 this.on("radar:miss", function(){
     this.thrusters.right(false);
     this.thrusters.top(true);
