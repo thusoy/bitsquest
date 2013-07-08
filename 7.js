@@ -58,7 +58,7 @@ this.on("radar:hit", function(angle, distance){
     this.thrusters.left(false);
     this.thrusters.top(true);
   }
-  
+
   if (this.thrusters.left()){
     fireBoth(this);
   } else {
@@ -71,4 +71,4 @@ this.on("radar:hit", function(angle, distance){
 this.on("radar:miss", function(){
   this.thrusters.left(true);
   this.thrusters.top(false);
-}
+});
