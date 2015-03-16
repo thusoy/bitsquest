@@ -28,7 +28,7 @@ var gapCheckRatio = 5;
 var directions = ["bottom", "right", "top", "left"];
 var turns = ["left", "bottom", "right", "top"];
 var wallCheckAngles = [90, 0, 270, 180];
-var gapCheckAngles = [180, 90, 0, 280];
+var gapCheckAngles = [180, 90, 0, 270];
 
 function go(bit, d){
     turnDistance = null;
@@ -43,21 +43,18 @@ function go(bit, d){
 
     if (d.indexOf('bottom') > -1){
         bit.thrusters.top(true);
-        bit.radar.angle(90);
     }
     if (d.indexOf('right') > -1){
         bit.thrusters.left(true);
-        bit.radar.angle(0);
     }
     if (d.indexOf('top') > -1){
         bit.thrusters.bottom(true);
-        bit.radar.angle(270);
     }
     if (d.indexOf('left') > -1){
         bit.thrusters.right(true);
-        bit.radar.angle(180);
     }
 
+    bit.radar.angle(wallCheckAngles[directions.indexOf(d)]);
     bit.radar.ping();
 }
 
